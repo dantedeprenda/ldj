@@ -1,0 +1,16 @@
+# Sensitivity: alpha = 0.20 instead of the primary 0.1331; otherwise as x4_t0_arms2.
+# strongest method; use checked against the TypeSafe MCA) and bge-large.
+# Same task, alpha, seed, budgets, shares and reps as configs/x4_t0.yaml, so rows pair
+# draw-for-draw with it. alpha fixed before any T0 result.
+name: x4_t0_alpha020
+task: {name: t0, benchmark: llmrouterbench}
+policy: {kind: accept, alpha: 0.20, delta: 0.05}
+budgets: [25, 50, 100, 200, 400, 800]
+fit_shares: [0, 0.10, 0.25, 0.50, 0.75]
+reps: 500
+seed: 0
+min_rest: 100
+methods:
+  - {type: questions, label: jev, answerer: {precomputed: jev}}
+  - {type: embedding, label: bgeL, model: BAAI/bge-large-en-v1.5, tune: true, heads: [logreg],
+     cache_dir: .cache/embeddings_t0}

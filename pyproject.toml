@@ -1,0 +1,39 @@
+[project]
+name = "ldj"
+version = "0.0.1"
+description = "Low-data judgment: label budgets, cost and human deferral for text decisions"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0",
+  "scipy>=1.11",
+  "scikit-learn>=1.4",
+  "pyyaml>=6",
+  "httpx>=0.27",
+  "pyarrow>=25.0.1",
+  "pandas>=3.0.6",
+  "synergy-dataset>=2.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+embeddings = ["sentence-transformers>=3"]
+setfit = ["setfit>=1.0", "datasets>=2.14"]
+cloud = [
+    "modal>=1.6.0",
+]
+
+[project.scripts]
+ldj = "ldj.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

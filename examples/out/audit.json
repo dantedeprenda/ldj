@@ -1,0 +1,25 @@
+{
+ "policy": {
+  "kind": "accept",
+  "alpha": 0.1,
+  "target": 0.95,
+  "delta": 0.05,
+  "cut": 0.5,
+  "selection": "fixed_sequence"
+ },
+ "n_audit": 121,
+ "n_deploy": 1036,
+ "assumptions": [
+  "The audit rows are a random sample of the items the policy will face.",
+  "The decision system (model, prompt, head) was frozen before the audit rows were labeled, and not changed after seeing them.",
+  "Deploy items come from the same distribution as audited items; a changed source needs a new audit.",
+  "Audit labels are the reference the target is stated against (e.g. one reviewer vs a consensus changes what is certified)."
+ ],
+ "threshold": NaN,
+ "automated_share": 0.0,
+ "audit_items_in_automated_region": 0,
+ "audit_errors_in_automated_region": 0,
+ "bound": null,
+ "verdict": "insufficient evidence",
+ "what_would_help": "Certifying risk <= 0.1 needs at least 29 audit items in the automated region with no errors (more if any are wrong); the first threshold tested holds 53 audit items."
+}

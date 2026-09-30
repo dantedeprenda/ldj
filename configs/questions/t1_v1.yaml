@@ -1,0 +1,21 @@
+# T1 question set v1. Written 2026-09-28 after reading training-split comments only; frozen by
+# preregistration/T1.md before any T1 test item was scored. Wording is our own; the ideas
+# overlap with the Measuring Hate Speech survey items (insult, dehumanization, violence, ...),
+# which is disclosed in the pre-registration.
+context: >
+  Below is a social-media comment. Answer questions about the comment itself, not about any
+  post it may be replying to.
+questions:
+  group_mention: Does the comment refer to a group of people defined by race, ethnicity, religion, gender, sexual orientation, gender identity, disability or national origin?
+  group_attack: Does the comment attack, mock or demean such a group, or a person because they belong to it?
+  individual_insult: Does the comment insult a specific individual?
+  slur: Does the comment use a slur or derogatory name for such a group?
+  dehumanize: Does the comment describe people as animals, vermin, filth, disease or otherwise less than human?
+  violence: Does the comment threaten, call for, wish for or celebrate violence against or the death of people?
+  exclusion: Does the comment say a group should be removed, deported, kept out, segregated or denied rights?
+  stereotype: Does the comment make a negative generalization about all or most members of a group?
+  casual_slur: Is a slur or offensive term used casually, jokingly or within the speaker's own group rather than to attack?
+  counter_speech: Does the comment defend, praise or show support for a group?
+  reporting: Is the comment quoting, reporting or discussing someone else's hateful words rather than endorsing them?
+  profanity: Does the comment contain profanity?
+  sarcasm: Is the comment sarcastic, ironic or a joke?

@@ -1,0 +1,25 @@
+# W7 (exploratory): prioritized screening with heuristic and
+# certified stopping on the 15 T2 test reviews. Each review's whole capped record set is the pool.
+# Offline: every LLM answer comes from the cache.
+name: w7_t2
+task: {name: t2, split: test, min_positives: 20, cap_records: 2000, test_frac: 0.5, seed: 0}
+runs: 30          # per review: seed pair and tie-breaking vary
+batch: 10         # active learning retrains every 10 screened records
+check_every: 5    # certified rule: checks and window starts every 5 records
+judge:
+  type: judge
+  label: gemma_judge
+  instruction: >
+    You screen records for a systematic review. Given the review's research question and
+    eligibility criteria, should this record go on to full-text review?
+  shots: [0]
+  max_chars: 3000
+  backend: &gemma {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225,
+                   offline: true}
+questions:
+  type: questions
+  label: gemma
+  answerer:
+    questions: configs/questions/t2_v1.yaml
+    max_chars: 3000
+    backend: *gemma

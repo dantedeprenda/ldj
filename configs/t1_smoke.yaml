@@ -1,0 +1,30 @@
+# Smoke test for T1: a small slice, draft questions, a hard spend cap. Checks prompts, parsing
+# and cost accounting; its numbers are not results.
+name: t1_smoke
+task: {name: t1, n_train: 200, n_test: 150}
+max_usd: 1.0
+methods:
+  - {type: base_rate}
+  - {type: tfidf, heads: [logreg]}
+  - type: questions
+    label: gemma
+    answerer:
+      questions: configs/questions/t1_draft.yaml
+      backend: {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225, rpm: 60}
+  - type: judge
+    label: gemma_judge
+    instruction: Is the following social-media comment hate speech?
+    shots: [0]
+    backend: {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225, rpm: 60}
+ks: [10, 50]
+seeds: [0]
+draw: {min_each: 1, min_each_below: 25}
+prices:
+  - {c_fp: 1.0, c_fn: 1.0, volume: 10000}
+analysis:
+  primary: gemma_features
+  baselines: [tfidf_logreg]
+  others: [gemma_judge_0shot, base_rate]
+  rule_k: 10
+  cost: {c_fp: 1.0, c_fn: 1.0, rule: ucb}
+  B: 500

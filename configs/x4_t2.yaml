@@ -1,0 +1,30 @@
+# X4 allocation frontier on T2 (exploratory). Every review is its own group: its own B labels,
+# its own certificate. Budgets that leave < min_rest unlabeled records in a review are skipped.
+# Offline: every LLM answer must already be cached.
+name: x4_t2
+task: {name: t2, split: test, min_positives: 20, cap_records: 2000, test_frac: 0.5, seed: 0}
+per_category: true
+policy: {kind: recall, target: 0.95, delta: 0.05}   # G1 target, fixed 2026-09-29
+budgets: [25, 50, 100, 200, 400, 800]
+fit_shares: [0, 0.10, 0.25, 0.50, 0.75]
+reps: 500
+seed: 0
+min_rest: 100
+methods:
+  - type: questions
+    label: gemma
+    answerer:
+      questions: configs/questions/t2_v1.yaml
+      max_chars: 3000
+      backend: &gemma {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225,
+                       offline: true}
+  - type: judge
+    label: gemma_judge
+    instruction: >
+      You screen records for a systematic review. Given the review's research question and
+      eligibility criteria, should this record go on to full-text review?
+    shots: [0]
+    max_chars: 3000
+    backend: *gemma
+  - {type: tfidf, heads: [logreg]}
+  - {type: embedding, label: bge, model: BAAI/bge-base-en-v1.5, heads: [logreg], device: mps}

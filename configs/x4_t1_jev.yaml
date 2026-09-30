@@ -1,0 +1,37 @@
+# W6 (exploratory; designed before any Jev answer on T1): Jev
+# (TypeSafe decision model) on T1 as a direct decision score, as answerer of the 13 author
+# questions, and features + direct. Same task, policy, seed, budgets, shares and reps as
+# configs/x4_t1_arms2.yaml, so rows pair draw-for-draw with the Gemma arms. Answers fetched once
+# (online, cap $10), then offline.
+name: x4_t1_jev
+task: {name: t1, n_train: 3000, n_test: 2000, min_annotations: 3, seed: 0}
+policy: {kind: classify, alpha: 0.10, delta: 0.05, cut: 0.5}
+budgets: [25, 50, 100, 200, 400, 800]
+fit_shares: [0, 0.10, 0.25, 0.50, 0.75]
+reps: 500
+seed: 0
+min_rest: 100
+max_usd: 10.0
+methods:
+  - type: judge                    # (a) Jev direct
+    label: jev_direct
+    instruction: &t1_instruction >
+      Is the following social-media comment hate speech? Hate speech attacks or demeans a group,
+      or a person because they belong to a group, defined by race, ethnicity, religion, gender,
+      sexual orientation, gender identity, disability or national origin.
+    shots: [0]
+    backend: &jev {kind: typesafe, model: jev-1.13.0, rpm: 300, offline: true}
+  - type: questions                # (b) Jev question features
+    label: jev
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: *jev
+  - type: questions_judge          # (c) Jev features + Jev direct
+    label: jev
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: *jev
+    judge:
+      label: jev_direct
+      instruction: *t1_instruction
+      backend: *jev

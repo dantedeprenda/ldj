@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install
+        run: uv sync --extra dev
+      - name: Lint
+        run: uv run ruff check
+      - name: Tests (no data, keys or network needed)
+        run: uv run pytest -q
+      - name: Offline replay of the packaged T1 result
+        run: uv run ldj reproduce --fixture moderation-v1

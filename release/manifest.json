@@ -1,0 +1,1872 @@
+{
+ "generated": "2026-09-30",
+ "git_commit": "2f69bb2",
+ "licences": {
+  "checked": "2026-09-30",
+  "code": "Apache-2.0 (this repository)",
+  "mhs": "CC-BY-4.0 (Measuring Hate Speech corpus); attribute Kennedy et al. 2020",
+  "synergy": "SYNERGY labels CC0; abstracts come from OpenAlex/publishers and are not redistributed: ship ids + a rebuild script + derived features",
+  "t0": "LLMRouterBench MIT; routing paper code MIT; Jev answers under TypeSafe's MCA, not published (derived metrics only)",
+  "t1_out": "Apache-2.0 for our code's outputs; Gemma outputs: Google claims no rights in outputs and they are not model derivatives (Gemma Terms of Use, last modified 2026-04-01); use stays subject to Gemma's prohibited-use policy; provider (OpenRouter) terms: re-check at release",
+  "t2_out": "as t1_out; no SYNERGY abstracts inside",
+  "t_out": "as t1_out",
+  "t0_out": "derived from Jev features and public benchmark outcomes; publish derived metrics only unless TypeSafe agrees otherwise",
+  "mixed": "item texts keep their source licence (MHS CC-BY-4.0; SYNERGY abstracts not redistributable)"
+ },
+ "files": [
+  {
+   "path": "data/audit/t1_audit.csv",
+   "bytes": 39741,
+   "sha256": "3310cd28d36dc18285df542d6ba41d6252898de025c563756697136cf90e59db",
+   "role": "Audit: author-checked labels with item texts",
+   "source": "this project",
+   "licence": "mixed",
+   "redistributable": "no (T2 abstracts); labels and ids only"
+  },
+  {
+   "path": "data/audit/t1_audit_claude.csv",
+   "bytes": 34181,
+   "sha256": "e5cec7a10b5f972df4030fc6a344fea536c56b9f0ecd8cc95d6f024714c09a3b",
+   "role": "Audit: Claude's proposed labels",
+   "source": "this project",
+   "licence": "mixed",
+   "redistributable": "no (T1 texts offensive; T2 abstracts)"
+  },
+  {
+   "path": "data/audit/t2_audit.csv",
+   "bytes": 621339,
+   "sha256": "f88b9dae35802f4a93ee56d474f1129ffe30c302384242d6cc98bde72c47a502",
+   "role": "Audit: author-checked labels with item texts",
+   "source": "this project",
+   "licence": "mixed",
+   "redistributable": "no (T2 abstracts); labels and ids only"
+  },
+  {
+   "path": "data/audit/t2_audit_claude.csv",
+   "bytes": 615825,
+   "sha256": "ddb06844b499ba1e7d577a9bf2e32f9afa64d9e17fd52da0fea7e7e319162390",
+   "role": "Audit: Claude's proposed labels",
+   "source": "this project",
+   "licence": "mixed",
+   "redistributable": "no (T1 texts offensive; T2 abstracts)"
+  },
+  {
+   "path": "data/t0/llmrouterbench.npz",
+   "bytes": 1170502,
+   "sha256": "705e00ed7f5301750fcb050211f696a91056518ca750bf0337465a50391d55a3",
+   "role": "T0 input: routing tasks, per-model correctness/cost, Jev answers",
+   "source": "jev-routing-paper export",
+   "licence": "t0",
+   "redistributable": "no (contains raw Jev answers)"
+  },
+  {
+   "path": "data/t0/llmrouterbench_pool.npz",
+   "bytes": 118826,
+   "sha256": "8d69aa5e5aae7f22301534d6fe5d0ea369cfa99fd995f0becddb00b1da19c256",
+   "role": "T0 input: routing tasks, per-model correctness/cost, Jev answers",
+   "source": "jev-routing-paper export",
+   "licence": "t0",
+   "redistributable": "no (contains raw Jev answers)"
+  },
+  {
+   "path": "data/t0/twinrouterbench.npz",
+   "bytes": 2594798,
+   "sha256": "c0fae41ddcfd31892f19f50507f74f58b7bf68f18f8dfc7902e88c9ced47a5b7",
+   "role": "T0 input: routing tasks, per-model correctness/cost, Jev answers",
+   "source": "jev-routing-paper export",
+   "licence": "t0",
+   "redistributable": "no (contains raw Jev answers)"
+  },
+  {
+   "path": "data/t1/measuring-hate-speech.parquet",
+   "bytes": 14123673,
+   "sha256": "6819525ce61bc24344df9fc3f7bf48270b31038273cc27c67fc225b51433b0e1",
+   "role": "T1 input: comments and annotations",
+   "source": "ucberkeley-dlab/measuring-hate-speech",
+   "licence": "mhs",
+   "redistributable": "yes, with attribution"
+  },
+  {
+   "path": "data/t2/get.log",
+   "bytes": 75243,
+   "sha256": "b4960378db9473599064f9cedeb5aa8c93c19117308685d93473a8b9c3362320",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Abgaz_2023.csv",
+   "bytes": 404447,
+   "sha256": "c64ad91104679c59a64e10f1d9ce43f64edf9eb408c39319b5f6e6573e91540a",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Adamo_2021.csv",
+   "bytes": 1344737,
+   "sha256": "89801cd3d31b9989666f969eed14fa8ad3ada45ed28ce733efedd7355ffabc3a",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Ali_2024.csv",
+   "bytes": 765638,
+   "sha256": "44af9843a8be39b53d87498708b2ee1a5f8167479f8e49061e71e0f79080662b",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Anmarkrud_2021.csv",
+   "bytes": 1133838,
+   "sha256": "8eb1ef3f8f28cfcba5f90c7874fd100a00564207bb52952ff2f2ca2221efa2ed",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Aouad_2024.csv",
+   "bytes": 1493187,
+   "sha256": "f44328f4c8b33541a2bf3068ef031f3d3e4b4231064a4096a5beea2a2c804ecc",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Appenzeller-Herzog_2019.csv",
+   "bytes": 917879,
+   "sha256": "a4fe7335fff25eb72953477e496cebdc24ca2ea122ccc1817aedc91cf0fae5ca",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Attai_2022.csv",
+   "bytes": 2858174,
+   "sha256": "e547acbb1264bb2985ba5bdc4c76074357d1f08e0154d798ee71c0f2e5f6473e",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Bakker-Jacobs_2022.csv",
+   "bytes": 1264123,
+   "sha256": "2427afaa134acb4a4a640b2eef2b293c7f85e6651bbf7b3d07121930c07e77ca",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Bech_2019.csv",
+   "bytes": 1116246,
+   "sha256": "74d7adf39a60694877588de9b184652bf67aa00189da3d6ed0e8cd9349b14607",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Bindoli_2024a.csv",
+   "bytes": 2897411,
+   "sha256": "02b314febcc8fd34e838832b5672d483d071f636052951e8fe4895c659243e12",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Bindoli_2024b.csv",
+   "bytes": 737472,
+   "sha256": "feaf9924fcb1164829f12f7b1dae8fc137efd043d1d1999024fe13d086448d66",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Boersma-van_Dam_2024.csv",
+   "bytes": 1085307,
+   "sha256": "1ed0c4d60e902ff2af1973e881aa8a8a3eeb927161c8aaef64336012e5c7375a",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Bos_2018.csv",
+   "bytes": 4105214,
+   "sha256": "cda3e985bf6e57b17aa99eabc2676a02005dd2fe58a48ff639a7b3ac0b7cf04d",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Bosch_2021.csv",
+   "bytes": 3660224,
+   "sha256": "ed67d7d6927572229e8e7a738977f407511a94bf29c940109ff006b220f675e2",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Bosch_2023.csv",
+   "bytes": 3617187,
+   "sha256": "f50b39500a421da8b40e32659dd114801b7c6967c36a7f8c4befde0057f65ffa",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Brons_2024.csv",
+   "bytes": 372200,
+   "sha256": "11d2456c9ab2b5864039887756beeb40922cf25b51d68320e1486b10a2566244",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Brouwer_2019.csv",
+   "bytes": 22033855,
+   "sha256": "37ee7f5313ae19ba7626a71b67e94b11652ef39fd54dd78f100834e57b4bb5e3",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Burska_2023.csv",
+   "bytes": 5834442,
+   "sha256": "974bab6304474e2062490f789b32c24d00aad74e529ce91a999011757a8e4c33",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Butink_2023.csv",
+   "bytes": 6382827,
+   "sha256": "1ab7c53f5801172a0d18ba4f6b2046012a68313908cb5c7cb84a3b74aeeb39b4",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Chakraborty_2023.csv",
+   "bytes": 3293666,
+   "sha256": "e789cc25ce839f0ea231a95f488ad5e4147b9c8331dd794791406e6b3210ddf8",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Chueca_2023.csv",
+   "bytes": 798575,
+   "sha256": "f5289108bafe066f029f1637727898838f00ef23af202f1704bd6c1c4f3ca64c",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Cinquin_2018.csv",
+   "bytes": 427941,
+   "sha256": "5981777623378420657b669c5b1280c325530217d329c9bda9c7a08bdc427ee4",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Clarinval_2021.csv",
+   "bytes": 681579,
+   "sha256": "57e0012b77f8e1ff3c06c3af75e52fac3af1fc679a376e78d023f39d0a518d51",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Clark_2021.csv",
+   "bytes": 319321,
+   "sha256": "38d89630fec595fb8bd8416e90857e113650596c36cb52cccc8001b81190bda5",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Cozim-Melges_2024.csv",
+   "bytes": 1262214,
+   "sha256": "d1d0a65ef0b93017f3b8b1b006d1ece4eda63f1f989be7344f02094209c8d4b8",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Deckers_2022.csv",
+   "bytes": 151120,
+   "sha256": "da71005ba860a1431a2386b85855762aba5c06e5f010a566fd2df89d925d7448",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Dolinska_2022.csv",
+   "bytes": 5956455,
+   "sha256": "8504dc2b0029831e3e9b1e32dd93e597d510d060d7edfa80f007fe6844b5e4f6",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Donners_2021.csv",
+   "bytes": 232842,
+   "sha256": "3c072d4ec40aa614d4f1001653f43c356e6bd059032bfb6f651e51933d6c7147",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Dornauer_2023.csv",
+   "bytes": 380652,
+   "sha256": "abee4f9a1cacb8b42525f5054651630999f7f0e168744f01947145e0a85dc00f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Eggmann_2023.csv",
+   "bytes": 496127,
+   "sha256": "d1b4c9b957add2df82064ac7f02a5c9d5c7b24c5916a3590f43060dc600f270a",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Endedijk_2021.csv",
+   "bytes": 1733440,
+   "sha256": "46db982abc9e8726b8b355e497dda4f90b91c1ed9cdc3f090a7021ce29430552",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Farisogullari_2023.csv",
+   "bytes": 3109396,
+   "sha256": "d4cb4f9c3633f2420448a4a5fcabde6feeb83f813289a65935722fac12622121",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Fejza_2023.csv",
+   "bytes": 2502102,
+   "sha256": "872a8b298f1c63be7555b3bcb26fa75a9818a7bc76b6a595c0d8e11fc62884cd",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Ferreira_2022.csv",
+   "bytes": 388069,
+   "sha256": "7eabbc0d0eb33c69274d2f3712c44772d28e574d48c0180d9887b9ea3164c33f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Filges_2018.csv",
+   "bytes": 1415694,
+   "sha256": "979c5e4b2175d2cb55a7a5da60fae86ca47a0aee6c0717c495ee5850161cbb77",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Filges_2022.csv",
+   "bytes": 1186613,
+   "sha256": "fe3f73eda62880dd271d8c8ded28036a8644ae082ecea8d396d974645b0201a2",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Fong_2021.csv",
+   "bytes": 1013026,
+   "sha256": "dd976e2f9205a2283931037f05ce8a68e1110f2ce7fff33eaec28ec06cdf36c3",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Giesen_2021.csv",
+   "bytes": 2819281,
+   "sha256": "12e88214225836ea495cc33c55e8eff1b0d9bf0c7802ecab0ab7114a31a8e939",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Greca_2023.csv",
+   "bytes": 513639,
+   "sha256": "103189ed71570ba128ac85d573bf9877d51757cc2c873990460146ea611efa77",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Hall_2011.csv",
+   "bytes": 378285,
+   "sha256": "19527b770a1c07353d3748ad4615062e2a375c46df8371d25789df29021f28e4",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Hamaker_2022.csv",
+   "bytes": 2550827,
+   "sha256": "dd0f0f7224505d274961b0bcfe7086e2b3a8f20cc7961bf994267c2ff59edde4",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Hanlon_2022.csv",
+   "bytes": 137408,
+   "sha256": "c3570660bec281cf93a2340ff69c1502f6534b664bb5b25a8af28efc4b0d3830",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Harms_2024.csv",
+   "bytes": 1543574,
+   "sha256": "f79ddb0dae54611a0872e963491e1832549f811c83cb542ea22aed7f6d87b095",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Hilfiker_2017.csv",
+   "bytes": 15508877,
+   "sha256": "10b25a8465b44c27744ff4df1221d47fa81e34a8e16bedf026ac31982b98c92b",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Kapuka_2021.csv",
+   "bytes": 300018,
+   "sha256": "f07f0fdd1920e0aa8429ce5b73878f70d9bc2fd56efd9a43831926e50916f4c1",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Kerschbaumer_2022.csv",
+   "bytes": 5140575,
+   "sha256": "66760f9c1e999779c371a05ae92ccc2e60e3a1cac27e2c0fb36d4e32e10569a3",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Kerschbaumer_2024a.csv",
+   "bytes": 4540113,
+   "sha256": "a1fe84f2c36869114aec526dbe53be89a2f0b07e90e18b2f9c905f32e72d81f2",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Kerschbaumer_2024b.csv",
+   "bytes": 2914603,
+   "sha256": "66e9e2fc7512ee21551be4b72d438d412f1d311e050fac26d93d0fc02fefdeea",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Lauper_2021.csv",
+   "bytes": 11049535,
+   "sha256": "20c5e1bfd1a403c08b71c868a96ba808c797e752ebaf17903e3eabf7c3e4f82c",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Leenaars_2019.csv",
+   "bytes": 2655149,
+   "sha256": "6f6493a6f912b60d47a1823718d43c4152cdf99eeefb37532276a7759ca13b8f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Leenaars_2020.csv",
+   "bytes": 3538900,
+   "sha256": "860a4f873f90158270fc3a1bb7fe197971862c71a54086c79c850d4594cb9589",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Lewowski_2021.csv",
+   "bytes": 514367,
+   "sha256": "8adb9fb44f5835f22539b07f313a4374c0adec2cb07b6c7d4d4da57f5c591625",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Low_2023.csv",
+   "bytes": 1083210,
+   "sha256": "986be98010b84fc6c1d20ef8edfbb532875ba65b2ad423c3a7c1a2b07605da74",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Maciel_2024.csv",
+   "bytes": 478914,
+   "sha256": "3b01d08e4673c11dec05d2bf90db07f201872315314776ea30c624507be9674f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Marques_2021.csv",
+   "bytes": 1899605,
+   "sha256": "5d99856b986132e56d94b0d94ce64a7b4962c8c2ff19afe7734dc728c2f97e7d",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Meijboom_2021.csv",
+   "bytes": 900407,
+   "sha256": "95ed404d89aeb2ea628129b05b5e869f7208d5068725016949f8750e76c103cc",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Mejean_2024.csv",
+   "bytes": 886456,
+   "sha256": "d5904aab4e028cb89c385f93ac1d687be4bfd945004fd9934d0079796ca37132",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Menon_2022.csv",
+   "bytes": 990373,
+   "sha256": "8036bb9027d2adcf4e63e2ac22c128b85f80088146c9de00f82c90907282a568",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Mohamed_2023.csv",
+   "bytes": 4821715,
+   "sha256": "0ca97d29b5af8818f7cab8443ebb6e5ce0d6f6c54ca69c25dcb794c39876c0d4",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Monschau_2025.csv",
+   "bytes": 16816540,
+   "sha256": "d2791345f06476530af58220a5df66b8deb169341f5122353a9e8869670bb431",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Moran_2020.csv",
+   "bytes": 3675701,
+   "sha256": "9c5130bd8a32eb7c6509bab5631e1f1c1687e9fc9ff08050bd006b3598584ed6",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Moseng_2024.csv",
+   "bytes": 8064945,
+   "sha256": "5c58aaaa106013c79e89862113f25226f15e570da9f5a89673589ae34ace6281",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Muthu_2020.csv",
+   "bytes": 1932172,
+   "sha256": "8d9633fd88b811d76c1aa1ed64ab13f5a0bd81cb39960d93419871af71cfb2a3",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Nobrega-Dos_Santos_2023.csv",
+   "bytes": 435224,
+   "sha256": "ab421945515f375c3ae7c27e3e2bd3d7bbfe53e15feb27aee4cd1c212c304adc",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Noetel_2021.csv",
+   "bytes": 857896,
+   "sha256": "c2daf07740a6fb541144fbc0c1a86e72cc17e86de48a611baea77c532e6765f3",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Oliveira_2021.csv",
+   "bytes": 309173,
+   "sha256": "d60e6c56e5d81ff61032c9db48bbbd50b5f52ccb88af45b4d075cc58f00027cc",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Oud_2018.csv",
+   "bytes": 468895,
+   "sha256": "4c0df5611a433fa7c6557c466003ec1b54c1e6a6eefde00615ef4732dcc1efc7",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Parodis_2023a.csv",
+   "bytes": 7339307,
+   "sha256": "11a0adbddd210866c0a456b500f3a5c2d0104e5f796d9bd81c09eff28b7ffcbf",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Parodis_2023b.csv",
+   "bytes": 3010680,
+   "sha256": "d2f22daea64bb701ffdcd28a0df481a921d255f8a1b37a92cab342a53d05acca",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Pijls_2017.csv",
+   "bytes": 79451,
+   "sha256": "5f52bdf2bd4fec0c4dd40c45ebc6c314840e66d84d9f71013118cba47cf2079b",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Pijls_2018.csv",
+   "bytes": 507731,
+   "sha256": "fe6bbb34eb20afcab97f70ee285273ff91f1870897f709d4c346d32a2678365b",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Pinos-Cisneros_2023.csv",
+   "bytes": 205685,
+   "sha256": "277a79123e1e0d0d76401ee3e49aad615f8dcaa5161faeb888ace4e8c0a0d1e2",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Quevedo_2023.csv",
+   "bytes": 314773,
+   "sha256": "fd5e72f1f19d3bb24959a97179cd826d4c9595a078573b6c9f1c7ccb85a1ff72",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Ramiro_2015.csv",
+   "bytes": 585842,
+   "sha256": "9291347e640aa6a2ff321eb094c693353a740af58ae74477a3c52739b52d0f82",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Rinne_2021.csv",
+   "bytes": 1550377,
+   "sha256": "a85936c8372057ca3e376cf2d8597dd1ccc60fdea6c4b20b5d9a3d0521623471",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Roberts_2021.csv",
+   "bytes": 1316374,
+   "sha256": "e72a8cc681822f2701964016b9fb99e2f44ca36afe08a8d5b9b0356df8f5888c",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Ruggeri_2019.csv",
+   "bytes": 3871269,
+   "sha256": "eb9d9e5a893907e0d0fab6d8681a53ff5c2d0650b6a230a4c19a9fcbcdfd2e8e",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Sanchez-Acedo_2023.csv",
+   "bytes": 528266,
+   "sha256": "f292d3b6ff89d5c7c2f32ea5a74de9753d477b40ce2d9471557329fc2d5d0739",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Sanchez-Alvarez_2023.csv",
+   "bytes": 4030981,
+   "sha256": "8f159a15413e3dd6975bc78808f64eba7c5ed86afc436c46af1b8bc1a213b351",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Sanchez-Gomez_2024.csv",
+   "bytes": 637261,
+   "sha256": "0973f7cff7542791b33c2ea019839ca414a1aab15e871adf65c5514fe36482cc",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Santos_2018.csv",
+   "bytes": 704543,
+   "sha256": "d0c23ecd7b0eed1c3763ce81c20fec59ae92f7fd0e8f69dbb4f130a95716b3c6",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Seghers_2022.csv",
+   "bytes": 3759158,
+   "sha256": "bb5abb82643f8ded0d87333e98201d4a2c92bb79a04eb64b541e4c28aba5d132",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Sep_2021.csv",
+   "bytes": 259731,
+   "sha256": "f697aab32bc6ffa118d4daeb2e7553872e569020f48403f9004f2a4078234b70",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Sepriano_2020.csv",
+   "bytes": 3474619,
+   "sha256": "b05128601ecc40bf0f250a6d410e87456561f104a26271e5d97d520c9d80b643",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Sepriano_2022.csv",
+   "bytes": 3686324,
+   "sha256": "ca10f625b97b81734ccaaae3b306df3e26eac5a03f448d38121ec3c8c1946c63",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Smid_2019.csv",
+   "bytes": 1141072,
+   "sha256": "0d4daf2ae37513903b0161506e04df81986a0b58df275e04e53f342d90248484",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Taschner_2024.csv",
+   "bytes": 2287265,
+   "sha256": "756e26a8a05ae3bbb3162793a9b689cfdbe79572bed29bc6d585234012b9220b",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Tektonidou_2019.csv",
+   "bytes": 2152140,
+   "sha256": "5546d9b8c580609294e59aa32af81e40b2447b791694cf1cb47dcd525a64171d",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Theobald_2021.csv",
+   "bytes": 142705,
+   "sha256": "7bdd34b2d212f6c35754a5fd99b73000ea5e68a9d6ddcdc1d86bd62d3454b72f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Toffalini_2021.csv",
+   "bytes": 555934,
+   "sha256": "f10ad03a2370a9ab77e3c210a820bc03bb131159b4089d48877e25e9c205773c",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Tumkaya_2018.csv",
+   "bytes": 719478,
+   "sha256": "aab3125c55d3801a611bef24cd8f76cec62c644b39ec8644706d9122ca1c1697",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Verdugo-Castro_2022.csv",
+   "bytes": 2204817,
+   "sha256": "438e55c707bf02c8b5c5a33b287855202ba1c1fa63e041751a53b86ea9949534",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Viguie_2020.csv",
+   "bytes": 3560432,
+   "sha256": "e635cb5ede781ae92479021140c843b84416c8d053e4a719a03341e32076ab12",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Walker_2018.csv",
+   "bytes": 19135246,
+   "sha256": "590e224004ffcc8a8ed2149e8813719bcd9eeb540fe29ce99033c5b9bcfc118e",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Ward_2020.csv",
+   "bytes": 719293,
+   "sha256": "e71cccd65ca5d81d5a08840e761096d924078ff6e5a907bdde570be3b1b3987c",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Wassenaar_2017.csv",
+   "bytes": 2571490,
+   "sha256": "2006923259d19c254ad1b9c22d1c93894e330e8874f01004614c7e95bd4430c2",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Webers_2022.csv",
+   "bytes": 16824952,
+   "sha256": "b985c060a6f9bfc454736e1f94b323875f3927d6ed5b90de50bd7834a9769c78",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Wijnen_2024.csv",
+   "bytes": 679472,
+   "sha256": "3356f351507e2a328f9148d6f7dce50684eaeefca94df991f147ee60d786d831",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Williamson_2023.csv",
+   "bytes": 511933,
+   "sha256": "57213184ee68ff3992b8106eb7a14d62d65b95f7275ffba2095b7743093e7b4e",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Wolters_2018.csv",
+   "bytes": 3138382,
+   "sha256": "cd7a20dcaf979af3b7199e0959f2c4d5b1834558c96141d6d7d8dda5674ee18e",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Xu_2022.csv",
+   "bytes": 1386266,
+   "sha256": "843adf2c62ed6eff5b10df1a14d222b7fa8fafad1bd768a4487ec7d93ccce69f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Zakeri-Nasrabadi_2023a.csv",
+   "bytes": 1037273,
+   "sha256": "ab97d0bc759112e32ab43c52786376e4dbe2d26f03e0886b9b1cdef91c077bdd",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Zakeri-Nasrabadi_2023b.csv",
+   "bytes": 2516863,
+   "sha256": "f49945d9630c9c75ece15c504c47e2794109d732be7fe85dc645d193ea09791d",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Zanframundo_2022.csv",
+   "bytes": 2390028,
+   "sha256": "38f51a89f69c6386725869b85e916bb9f06c1419b1ecf6fcbc5e5520143241cb",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/Zinsser_2022.csv",
+   "bytes": 230589,
+   "sha256": "f9989693ff494bad6d590e38d7109e03c9deac82bcc4cbee651b4a2dbcfcbd1f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/de_Matteis_2024a.csv",
+   "bytes": 268254,
+   "sha256": "9699fc93d81d0d6c8785809c74182ce9838e9a134e2a931fc8036cc393926ceb",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/de_Matteis_2024b.csv",
+   "bytes": 1960038,
+   "sha256": "b855f033640c7d0393af643d401d9e085f0ebfc5eb5bea63988a7725735717ea",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/metadata/review_metadata.csv",
+   "bytes": 356415,
+   "sha256": "7ac63edc310e6c24add56d2b76a8607489b2e87b59cba7b45d7f7caa0d4e6304",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/van_Ballegooijen_2024.csv",
+   "bytes": 6880962,
+   "sha256": "f5bcde55834a67a821dc172a30d4557d98f9f008784802c44575cbe9542833f1",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/van_Dis_2019.csv",
+   "bytes": 6063825,
+   "sha256": "a90a6118e7d11325f67c4f78437a8bd8fbf28602da514ecd8775a882c5c92646",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/van_Heugten_Breurkes_2022.csv",
+   "bytes": 449221,
+   "sha256": "6f271290ae7e59235e202a14c0cd2a5a49d0a2c670d87783c8cb8085e5514328",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/van_Hoorn_2020.csv",
+   "bytes": 2106092,
+   "sha256": "bcb7fd85415a3ced786a44ce6709830537545345266a09923f6e30bbc9684bad",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/van_de_Schoot_2025.csv",
+   "bytes": 13571302,
+   "sha256": "90d6dcb772d377b17f5f200c805bdbdfd9bc7ca9ef06c59d4781e64611259a1f",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/van_der_Valk_2021.csv",
+   "bytes": 721575,
+   "sha256": "f4a1f1cd60c512eb67b6bf2763521ac2bf36ac88ff303ae11cb9641dffac9b99",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy/van_der_Waal_2022.csv",
+   "bytes": 2357494,
+   "sha256": "b051006d3ea129d032c09835bc23238a31ce0ee210bd8c294f9dd7d207f952d5",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "data/t2/synergy_cache.sqlite",
+   "bytes": 434176,
+   "sha256": "27f713dd49a271fa900779a7da161a49f707151a18956902023805da3dd3cfd9",
+   "role": "T2 input: SYNERGY records (build cache)",
+   "source": "SYNERGY+ v3.0 via OpenAlex",
+   "licence": "synergy",
+   "redistributable": "no (abstracts)"
+  },
+  {
+   "path": "results/audit_t1.json",
+   "bytes": 543,
+   "sha256": "6d21a152263689afe611c20b3f840168ee45c57ffa6d7b10a3ce3a5daffa19e8",
+   "role": "Audit agreement and disagreeing ids",
+   "source": "this project",
+   "licence": "code",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/audit_t1_claude.json",
+   "bytes": 556,
+   "sha256": "151f4ac7f8e83313740109ab86e510f5c40f7d8627707da4bcbf33656a04dbb8",
+   "role": "Audit agreement and disagreeing ids",
+   "source": "this project",
+   "licence": "code",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/audit_t2.json",
+   "bytes": 548,
+   "sha256": "c013756beee8b6088b6c7cfcb61d35a9dc7aca11378032bc6b593ce915da60bd",
+   "role": "Audit agreement and disagreeing ids",
+   "source": "this project",
+   "licence": "code",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/audit_t2_claude.json",
+   "bytes": 548,
+   "sha256": "c013756beee8b6088b6c7cfcb61d35a9dc7aca11378032bc6b593ce915da60bd",
+   "role": "Audit agreement and disagreeing ids",
+   "source": "this project",
+   "licence": "code",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/bridge_t0/equal_cost.json",
+   "bytes": 2855,
+   "sha256": "b230b62cb92a0639bebfc1d934c4108b41e751df5494705aa8ccd6cc8806a562",
+   "role": "W1 E-bridge reports",
+   "source": "this project",
+   "licence": "t0_out",
+   "redistributable": "yes (derived)"
+  },
+  {
+   "path": "results/bridge_t0/equal_cost.md",
+   "bytes": 1678,
+   "sha256": "452b5da277d96db342126ad9a2a978a98935dfd69bcfdf18c926ea5014b76330",
+   "role": "W1 E-bridge reports",
+   "source": "this project",
+   "licence": "t0_out",
+   "redistributable": "yes (derived)"
+  },
+  {
+   "path": "results/bridge_t0/report.json",
+   "bytes": 30680,
+   "sha256": "ca5feb06e6493c3dcbe9e5685681ee30bc79df5ea623b2363bf744bc7f7e90f0",
+   "role": "W1 E-bridge reports",
+   "source": "this project",
+   "licence": "t0_out",
+   "redistributable": "yes (derived)"
+  },
+  {
+   "path": "results/bridge_t0/report.md",
+   "bytes": 8414,
+   "sha256": "ff03d760aa643b1234b06dca3c048e24bbf47cff9323473d156c7ba87e3f0303",
+   "role": "W1 E-bridge reports",
+   "source": "this project",
+   "licence": "t0_out",
+   "redistributable": "yes (derived)"
+  },
+  {
+   "path": "results/ledger_t1.csv",
+   "bytes": 44157,
+   "sha256": "e051b2baf7392865460ca2ea43c16d05fc37af14051df7dcb8c89813d449b1a3",
+   "role": "W3 whole-workflow ledger",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/ledger_t1.md",
+   "bytes": 2894,
+   "sha256": "29f29aff6bf4f46fb6619ef143e4d47eff8a909eb7e7d83b694ae85bc71d3f28",
+   "role": "W3 whole-workflow ledger",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/t0_reproduce/preds.npz",
+   "bytes": 802994,
+   "sha256": "f97db88cb151316cac670f7088c2aaca412862ede67d4f98468e9a9707c819d2",
+   "role": "T0 reproduction of the routing paper",
+   "source": "this project",
+   "licence": "t0_out",
+   "redistributable": "check (predictions from Jev features)"
+  },
+  {
+   "path": "results/t0_reproduce/records.json",
+   "bytes": 44353,
+   "sha256": "55a69efb3da4f5ccdbc4ebc73dbfeb51d71225055979b3c90d994e690a5f474b",
+   "role": "T0 reproduction of the routing paper",
+   "source": "this project",
+   "licence": "t0_out",
+   "redistributable": "check (predictions from Jev features)"
+  },
+  {
+   "path": "results/t0_reproduce/summary.md",
+   "bytes": 601,
+   "sha256": "3035f00d8b663e191d4bba016e215a1de36c7e7fbd8d1f1af52f399328f3e875",
+   "role": "T0 reproduction of the routing paper",
+   "source": "this project",
+   "licence": "t0_out",
+   "redistributable": "check (predictions from Jev features)"
+  },
+  {
+   "path": "results/t1/analysis.json",
+   "bytes": 27062,
+   "sha256": "71b301ef0131a08ca097ec5f7a8d3d55f8a564b47a68fff5a20b3a8db64475b7",
+   "role": "T1 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t1_out",
+   "redistributable": "yes (predictions, incl. Gemma judge probabilities)"
+  },
+  {
+   "path": "results/t1/analysis.md",
+   "bytes": 8197,
+   "sha256": "3b2acadcd3aea941417c6527dd7ecf78483db0dbf3fd05a970f3e8c57c07237b",
+   "role": "T1 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t1_out",
+   "redistributable": "yes (predictions, incl. Gemma judge probabilities)"
+  },
+  {
+   "path": "results/t1/analysis_audit.json",
+   "bytes": 27585,
+   "sha256": "a6b7b42ce96d9d77625fb6852d9719d52cbbe167bb8bdce9a10ec011835128f6",
+   "role": "T1 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t1_out",
+   "redistributable": "yes (predictions, incl. Gemma judge probabilities)"
+  },
+  {
+   "path": "results/t1/analysis_audit.md",
+   "bytes": 8302,
+   "sha256": "5a271b89675264f75822dd55d8cf6df601083d154627f035e4bcc574e1acbd2e",
+   "role": "T1 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t1_out",
+   "redistributable": "yes (predictions, incl. Gemma judge probabilities)"
+  },
+  {
+   "path": "results/t1/preds.npz",
+   "bytes": 1913121,
+   "sha256": "d4fc1e5122b9e9083df2dc5bd9e4bc6e66f7fb00d84b0189857211e67556537b",
+   "role": "T1 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t1_out",
+   "redistributable": "yes (predictions, incl. Gemma judge probabilities)"
+  },
+  {
+   "path": "results/t1/records.json",
+   "bytes": 697011,
+   "sha256": "4201c2ed69b813675688cd6eb7bc538293ae17147cd620127ee6171f29d90ec0",
+   "role": "T1 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t1_out",
+   "redistributable": "yes (predictions, incl. Gemma judge probabilities)"
+  },
+  {
+   "path": "results/t1/summary.md",
+   "bytes": 12361,
+   "sha256": "e83d703a921646cdfa62451b49c4e70ae911f06e2a4266cd11036a648a87cd05",
+   "role": "T1 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t1_out",
+   "redistributable": "yes (predictions, incl. Gemma judge probabilities)"
+  },
+  {
+   "path": "results/t1_repro_h1/preds.npz",
+   "bytes": 150153,
+   "sha256": "890ebf686434baf4e83755b8de062990ba206c6d6870d2dd9542bc713c820a27",
+   "role": "Reproduction checks (fresh process)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/t1_repro_h1/records.json",
+   "bytes": 39446,
+   "sha256": "81d9a0c64aca7f0088ad0f4ac4bdd7effc156667128b8b14338a8a9583f99bf4",
+   "role": "Reproduction checks (fresh process)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/t1_repro_h1/summary.md",
+   "bytes": 1455,
+   "sha256": "a157ce3e8507ab6ef0604ce06331487c3fa6320ffec2ddb628b6139fca113e95",
+   "role": "Reproduction checks (fresh process)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/t1_smoke/analysis.json",
+   "bytes": 3189,
+   "sha256": "edc13e7428c2011186e317bd723ecea054d0be78c06ec93209fed849c6b256b4",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/t1_smoke/analysis.md",
+   "bytes": 1429,
+   "sha256": "84c36a62c0851937a8990833f56cd9d677b54b25980c468b3f21ebc160d0cffc",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/t1_smoke/preds.npz",
+   "bytes": 10909,
+   "sha256": "805c4c5e6aa7db39322da408abfad45ea602e2dd3d1fb64cd30365f09081f42a",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/t1_smoke/records.json",
+   "bytes": 8851,
+   "sha256": "7ea077ca3570479a462a52c63bb1fd84dfcbd04d2fb45386163da2b196449caa",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/t1_smoke/summary.md",
+   "bytes": 1076,
+   "sha256": "d6aa7c5d52fdb341e09c6438444c456b37ae6f00187cfccf85934890a00d669a",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/t2/analysis.json",
+   "bytes": 11806,
+   "sha256": "050c87a7e6a8de9f1e1e29819504b96b27cfb16c7dd3a6ea1a8170718d58982b",
+   "role": "T2 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t2_out",
+   "redistributable": "yes (scores and ids only; no abstracts)"
+  },
+  {
+   "path": "results/t2/analysis.md",
+   "bytes": 3454,
+   "sha256": "b2626c975af8d8b43f95ac56249cb9c5181995608a08336100372d485cf89f8f",
+   "role": "T2 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t2_out",
+   "redistributable": "yes (scores and ids only; no abstracts)"
+  },
+  {
+   "path": "results/t2/analysis_audit.json",
+   "bytes": 11830,
+   "sha256": "36c5b1bd7788471b2f846d0178958e032e4202d69611e1344cd565faca3b9725",
+   "role": "T2 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t2_out",
+   "redistributable": "yes (scores and ids only; no abstracts)"
+  },
+  {
+   "path": "results/t2/analysis_audit.md",
+   "bytes": 3559,
+   "sha256": "9bfc1f64b4c048793ad820d9702fdd9cfec0e2f38b54ded816ce6aaea4236dfd",
+   "role": "T2 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t2_out",
+   "redistributable": "yes (scores and ids only; no abstracts)"
+  },
+  {
+   "path": "results/t2/preds.npz",
+   "bytes": 5653613,
+   "sha256": "287e9f9a02325983b047de7e056d24c3ddc2bd3160e7aa4c982b415952f1d278",
+   "role": "T2 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t2_out",
+   "redistributable": "yes (scores and ids only; no abstracts)"
+  },
+  {
+   "path": "results/t2/records.json",
+   "bytes": 2204594,
+   "sha256": "9481459708eff824b27dc8792c5b8ba2298d21a8fec0308995d10853b8ed558f",
+   "role": "T2 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t2_out",
+   "redistributable": "yes (scores and ids only; no abstracts)"
+  },
+  {
+   "path": "results/t2/summary.md",
+   "bytes": 13946,
+   "sha256": "0a35c14d2745f537ea4c7de04e8a8dba7c1b2fb8f10a004aabeac83217a3a79a",
+   "role": "T2 pre-registered run outputs",
+   "source": "this project",
+   "licence": "t2_out",
+   "redistributable": "yes (scores and ids only; no abstracts)"
+  },
+  {
+   "path": "results/t2_repro_h1/preds.npz",
+   "bytes": 524872,
+   "sha256": "09e06b7623cfadd2bfff34adb31ca507fb029475ee71b2cf3540ad2c9ab7b202",
+   "role": "Reproduction checks (fresh process)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/t2_repro_h1/records.json",
+   "bytes": 146136,
+   "sha256": "840f1db52115fb9d13832c6877646664d65d818600b596b1245ebad6b0f9e34d",
+   "role": "Reproduction checks (fresh process)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/t2_repro_h1/summary.md",
+   "bytes": 1899,
+   "sha256": "135bd7faf50ce05730f2572b0b8e2115daaa7090bec94def138e2103a0c73bac",
+   "role": "Reproduction checks (fresh process)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/t2_smoke/preds.npz",
+   "bytes": 7664,
+   "sha256": "7f24f5f4d11ecbf409487d5d88ca542eca35334eea128c9f3e3b031266b0939b",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/t2_smoke/records.json",
+   "bytes": 9791,
+   "sha256": "8b14aca2718ae6f79a5b7c9b80da19ff95a5caecdcfdf413b1e73647cd38815d",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/t2_smoke/summary.md",
+   "bytes": 1236,
+   "sha256": "197c7ba19528f395243317b38fbfdca4d5eab0679b1553d17b5ed26b7ef91f20",
+   "role": "Smoke tests (not results)",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "not needed"
+  },
+  {
+   "path": "results/x1_t1/analysis.json",
+   "bytes": 12605,
+   "sha256": "a62597f7229f795e86edb2b80c117955c03b89fce0b30fde4bb331401bf38405",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t1/analysis.md",
+   "bytes": 4257,
+   "sha256": "84a131803261417c86c3f2a04128e87a5edfefc90d813e3eee583912db51941c",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t1/calibration.md",
+   "bytes": 380,
+   "sha256": "dfe1e13c243c854c3749387ace97f7c64d4f7c3ded4f0ee0a6d4fa77fb91e86e",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t1/preds.npz",
+   "bytes": 1612508,
+   "sha256": "e15310e0fcefdd85d0381a7287f802a56c362781aa6dd2910cf003eb9a96911e",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t1/records.json",
+   "bytes": 346448,
+   "sha256": "862d127f17267d67881d39c148e79883aca38c3450bc1b560c083d6d8face39f",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t1/summary.md",
+   "bytes": 6495,
+   "sha256": "60cc27865765edeae0f6237d2526144f3a4b3792bec6d47b46dc541c276954ae",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t2/analysis.json",
+   "bytes": 6970,
+   "sha256": "f93fbde47257d1b7284472b79d704d3912723305601dc7a14cf07b5a6ea8e131",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t2/analysis.md",
+   "bytes": 2248,
+   "sha256": "d7b4a5aee93616d5c4f93285734118b6178909ea4af1947bc68fa9ab6a989e52",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t2/calibration.md",
+   "bytes": 380,
+   "sha256": "bbb271eb8992fb5696c79e9a9cbe93122cfae9bf0d0488966b52c99634543054",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t2/preds.npz",
+   "bytes": 5479440,
+   "sha256": "ea9c8f387e2190443cc6ced0ffbcb1e2d2c966224730b54a1e838202465f7897",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t2/records.json",
+   "bytes": 1271474,
+   "sha256": "a55509390aa53815c5d4fd2bcfd1f7184cd733e86feb6dd65cb6fd779fa54d9c",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x1_t2/summary.md",
+   "bytes": 8597,
+   "sha256": "31107174f674bcf010b50cb38354088c08521fde86e95db49cc9ba1866ca8532",
+   "role": "X1 exploratory outputs",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t0/config.json",
+   "bytes": 605,
+   "sha256": "b8230d76fa0ba39a935ab06a37fbfe2aabe0fcd8ff6d3c5297fded8035773727",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t0/rows.parquet",
+   "bytes": 172527,
+   "sha256": "e81e0338cc7f838a1b30391d06ea1723b3069fe2fc0eb9401d33abb9af94dc4d",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t0/summary.csv",
+   "bytes": 11420,
+   "sha256": "40d1343e53743c0ad48817df53296d7b145bdaa596196cc31e7fa12e16cf9669",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t0/summary.md",
+   "bytes": 11984,
+   "sha256": "b27fafeecbf5fd47bfcd9153a6edb82ce30a93325102201f0ab9512820011194",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1/config.json",
+   "bytes": 1368,
+   "sha256": "754af211f4b3d02989a7505a4e1eb245580b991aeb24e6d765a4344f89965eaf",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1/rows.parquet",
+   "bytes": 401538,
+   "sha256": "df4f67ae5143f8bbc7102862eb261b232101b2f3dfd244dedd7c92560d756da6",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1/summary.csv",
+   "bytes": 15793,
+   "sha256": "3376061d0ac5a60dc720ac1e005b2a20c65d310471befff3a088814345ef45ad",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1/summary.md",
+   "bytes": 17273,
+   "sha256": "f7a8830789e24860ef1ffcea15866ac7a77bc924040c704ec145d9f45c3e0a46",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_arms2/config.json",
+   "bytes": 1291,
+   "sha256": "c4bc7d606ab4406a8f1261bd9bbc77f13f5332263f4def647e6240def9ee99ed",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_arms2/rows.parquet",
+   "bytes": 326389,
+   "sha256": "016e00b08dac24fcd6bb2f03f74e92675f9baebf89d60746489c19123a0a3c39",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_arms2/summary.csv",
+   "bytes": 8123,
+   "sha256": "e53ab06648640bf36be8c3bc3a679c648bcc4738ee3b6c7d4847d9da672af31e",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_arms2/summary.md",
+   "bytes": 8525,
+   "sha256": "fa32dc933f5dce47d53cb45649af1517a510e4664a0824fcaca04f4c15e92d45",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_pilot20/config.json",
+   "bytes": 1367,
+   "sha256": "6d134de2fd579ed663634ae5e5b1eca74a7915365cbd3bcad37134271d67f728",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_pilot20/rows.parquet",
+   "bytes": 29117,
+   "sha256": "c79a53394c827910f06a0dc141e1537fa372ac515dd37899e1ce55ec8e9ce589",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_pilot20/summary.csv",
+   "bytes": 8988,
+   "sha256": "a581a7a8776ad674d36985bda3c1130e45eefa7498a575cd6c2955e8f98afcff",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_pilot20/summary.md",
+   "bytes": 13084,
+   "sha256": "a78ba2dace9ebbe7524e490741a3a39ad3a3215859f477d30568a7c05ea60015",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_single/config.json",
+   "bytes": 1412,
+   "sha256": "00a0032ea5170075c4f68cdf47f5aaabc5fe91f03c8a7de0371460052da9dc85",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_single/rows.parquet",
+   "bytes": 325713,
+   "sha256": "a03debd44efb924fda266f197a79d370d70419035a556eacea4aa167ef42d6d3",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_single/summary.csv",
+   "bytes": 15579,
+   "sha256": "b70bce54002df9bfa518c041a97ddaee60a3c2c4ea12c1039d8a3ecad847cf06",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t1_single/summary.md",
+   "bytes": 17260,
+   "sha256": "4373310a12a1ec8cfa50f6b63335cee4261c751ae031f9ba64d855961f35eca3",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2/config.json",
+   "bytes": 1313,
+   "sha256": "9d8392bb69836873c806e4e479160a6a041d99b980355be04a80f8795a379f73",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2/rows.parquet",
+   "bytes": 1774943,
+   "sha256": "69163bb404569f618bdb51c90d77faa97eecd6eabe0d9ea8814cb6763fc5e696",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2/summary.csv",
+   "bytes": 13098,
+   "sha256": "757c9903308814563134b76c919f44ca1917ca93d57a66a27a920da4ee8766d4",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2/summary.md",
+   "bytes": 13420,
+   "sha256": "684bc99710646dadb5b53dc53ced63ee5b32f6a110a916b37bbce62aa0b69b0e",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2_arms2/config.json",
+   "bytes": 1274,
+   "sha256": "0df8b11e61a8446ff62ec80f4c55e0abf751d7d71399632d5b09e00e0c3ed118",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2_arms2/rows.parquet",
+   "bytes": 1050826,
+   "sha256": "3e0872ad90d08bafc80b2c64e445a7ba1784681b142497d1b36acb29590fe2b0",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2_arms2/summary.csv",
+   "bytes": 7810,
+   "sha256": "6bdd87af668a41e71ff26bdf8683bcd998a1ef38bbf3ad7dbee61160a1999fbf",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  },
+  {
+   "path": "results/x4_t2_arms2/summary.md",
+   "bytes": 8356,
+   "sha256": "9b660b0ebebe1af93e8f40ddf2fc9f5a48401f01ecf8add3b5b520783f94592a",
+   "role": "X4 exploratory allocation rows and summaries",
+   "source": "this project",
+   "licence": "t_out",
+   "redistributable": "yes"
+  }
+ ]
+}

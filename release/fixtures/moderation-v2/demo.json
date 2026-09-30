@@ -1,0 +1,14 @@
+{
+ "method": "gemma_features_judge|25|42",
+ "sizes": [
+  50,
+  1000
+ ],
+ "seed": 0,
+ "alphas": [
+  0.1,
+  0.21
+ ],
+ "analysis_label": "Exploratory X1 analysis",
+ "note": "The frozen rule's method (features + judge), fit on 25 labels. Error-rate target 0.10 is T1's primary; 0.21 (no worse than one human reviewer) its secondary. Same sizes and seed as moderation-v1."
+}

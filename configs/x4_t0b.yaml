@@ -1,0 +1,19 @@
+# X4 allocation frontier on TwinRouterBench (T0b; exploratory). alpha = half the always-accept
+# risk on the train pool, fixed before any result. Budgets that leave
+# fewer than min_rest unlabeled prompts (B = 800 here) are skipped.
+name: x4_t0b
+task: {name: t0, benchmark: twinrouterbench}
+policy: {kind: accept, alpha: 0.1450, delta: 0.05}
+budgets: [25, 50, 100, 200, 400, 800]
+fit_shares: [0, 0.10, 0.25, 0.50, 0.75]
+reps: 500
+seed: 0
+min_rest: 100
+methods:
+  - {type: category_prior}
+  - {type: tfidf, heads: [logreg]}
+  - {type: embedding, label: bge, model: BAAI/bge-base-en-v1.5, heads: [logreg],
+     cache_dir: .cache/embeddings_t0}
+  - {type: embedding, label: bgeL, model: BAAI/bge-large-en-v1.5, tune: true, heads: [logreg],
+     cache_dir: .cache/embeddings_t0}
+  - {type: questions, label: jev, answerer: {precomputed: jev}}

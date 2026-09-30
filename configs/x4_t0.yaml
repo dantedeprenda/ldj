@@ -1,0 +1,18 @@
+# X4 allocation frontier on T0 (exploratory). Accept = send to the cheap model; wrong when it
+# fails. alpha must be written here from the G1 memo (half the always-accept risk) BEFORE
+# running: the script refuses a null alpha.
+name: x4_t0
+task: {name: t0, benchmark: llmrouterbench}
+policy: {kind: accept, alpha: 0.1331, delta: 0.05}   # fixed 2026-09-30, before any T0 result
+budgets: [25, 50, 100, 200, 400, 800]
+fit_shares: [0, 0.10, 0.25, 0.50, 0.75]
+reps: 500
+seed: 0
+min_rest: 100
+methods:
+  - {type: category_prior}
+  - {type: tfidf, heads: [logreg]}
+  - {type: embedding, label: bge, model: BAAI/bge-base-en-v1.5, heads: [logreg],
+     cache_dir: ../routing-success-prediction/.cache/embeddings}
+  # Jev question features (precomputed: jev) are left out: a head fit on Jev answers may count
+  # as training on Jev outputs (MCA §2.3(b)); decide before adding.

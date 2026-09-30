@@ -1,0 +1,40 @@
+# W6 (exploratory): does the frozen rule (preregistration/default-rule.md) depend on Gemma? The same
+# questions (configs/questions/t1_v1.yaml) and judge instruction, answered by a second open-weight
+# model chosen before any of its answers existed (2026-09-30): meta-llama/llama-3.3-70b-instruct
+# (different family from Gemma; dense 70B; structured output on OpenRouter; $0.10/$0.32 per M).
+# It replaces Gemma both as question answerer and as judge. Same task, policy, seed, budgets,
+# shares and reps as configs/x4_t1_arms2.yaml, so rows pair draw-for-draw with the Gemma arms.
+# Answers fetched once with scripts/answer.py (cap $3), then offline.
+name: x4_t1_llama
+task: {name: t1, n_train: 3000, n_test: 2000, min_annotations: 3, seed: 0}
+policy: {kind: classify, alpha: 0.10, delta: 0.05, cut: 0.5}
+budgets: [25, 50, 100, 200, 400, 800]
+fit_shares: [0, 0.10, 0.25, 0.50, 0.75]
+reps: 500
+seed: 0
+min_rest: 100
+max_usd: 3.0
+methods:
+  - type: questions_judge
+    label: llama
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: &llama {model: meta-llama/llama-3.3-70b-instruct, price_in: 0.10, price_out: 0.32,
+                       rpm: 200, offline: true}
+    judge: &judge
+      label: llama_judge
+      instruction: &t1_instruction >
+        Is the following social-media comment hate speech? Hate speech attacks or demeans a group,
+        or a person because they belong to a group, defined by race, ethnicity, religion, gender,
+        sexual orientation, gender identity, disability or national origin.
+      backend: *llama
+  - type: judge
+    label: llama_judge
+    instruction: *t1_instruction
+    shots: [0]
+    backend: *llama
+  - type: questions
+    label: llama
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: *llama

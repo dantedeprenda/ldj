@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Escalation report</title><style>
+:root { --bg:#ffffff; --fg:#1d1d1f; --muted:#5f6368; --line:#d9dce1; --card:#f6f7f9;
+  --ok:#0b6b3a; --ok-bg:#e3f4ea; --no:#8a4b00; --no-bg:#fdf0dc; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#16181c; --fg:#e8eaed; --muted:#a3a8b0; --line:#34383f; --card:#1f2228;
+    --ok:#7fd8a4; --ok-bg:#16301f; --no:#f3c07a; --no-bg:#3a2a12; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg);
+  font:15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width:860px; margin:0 auto; padding:24px 16px 48px; }
+h1 { font-size:22px; margin:0 0 4px; } h2 { font-size:17px; margin:28px 0 8px; }
+.sub { color:var(--muted); margin:0 0 20px; }
+.verdict { border-radius:10px; padding:16px 18px; margin:16px 0; font-size:18px; font-weight:600; }
+.verdict.ok { background:var(--ok-bg); color:var(--ok); }
+.verdict.no { background:var(--no-bg); color:var(--no); }
+.verdict small { display:block; font-size:14px; font-weight:400; margin-top:6px; color:var(--fg); }
+table { border-collapse:collapse; width:100%; margin:8px 0; font-variant-numeric:tabular-nums; }
+th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:500; font-size:13px; }
+.wrap { overflow-x:auto; }
+.card { background:var(--card); border-radius:10px; padding:12px 16px; margin:8px 0; }
+ul { padding-left:20px; } li { margin:4px 0; }
+.note { color:var(--muted); font-size:13px; }
+</style></head><body><main><h1>Escalation report</h1><p class="sub">examples/out/bridge_input.csv: 121 items. Default right 0.653 at 0.5 per item; fallback right 0.893 at 4.</p><h2>Where escalation can matter</h2><div class="wrap"><table><tr><th>Both right</th><th>Only default right (escalating breaks)</th><th>Only fallback right (escalating repairs)</th><th>Both wrong</th><th>Escalation value</th></tr><tr><td>69</td><td>10</td><td>39</td><td>3</td><td>+0.240</td></tr></table></div><p class="note">Escalation value = P(repair) − P(break): what escalating every item is worth. Both outcomes must be observed on every evaluated item.</p><h2>Escalating the top-scored share</h2><div class="wrap"><table><tr><th>Rate</th><th>Score</th><th>Accuracy</th><th>Cost</th><th>Repaired</th><th>Broken</th><th>Net</th><th>95% CI</th></tr><tr><td>10%</td><td>random</td><td>0.669</td><td>0.8471</td><td>4</td><td>2</td><td>+0.0165</td><td>[-0.0248, +0.0579]</td></tr><tr><td>10%</td><td>oracle</td><td>0.752</td><td>0.8471</td><td>12</td><td>0</td><td>+0.0992</td><td>[+0.0496, +0.1570]</td></tr><tr><td>10%</td><td>risk</td><td>0.686</td><td>0.8471</td><td>4</td><td>0</td><td>+0.0331</td><td>[+0.0083, +0.0661]</td></tr><tr><td>20%</td><td>random</td><td>0.702</td><td>1.194</td><td>8</td><td>2</td><td>+0.0496</td><td>[+0.0000, +0.1074]</td></tr><tr><td>20%</td><td>oracle</td><td>0.851</td><td>1.194</td><td>24</td><td>0</td><td>+0.1983</td><td>[+0.1240, +0.2727]</td></tr><tr><td>20%</td><td>risk</td><td>0.744</td><td>1.194</td><td>11</td><td>0</td><td>+0.0909</td><td>[+0.0413, +0.1405]</td></tr><tr><td>30%</td><td>random</td><td>0.727</td><td>1.541</td><td>11</td><td>2</td><td>+0.0744</td><td>[+0.0165, +0.1322]</td></tr><tr><td>30%</td><td>oracle</td><td>0.950</td><td>1.541</td><td>36</td><td>0</td><td>+0.2975</td><td>[+0.2149, +0.3802]</td></tr><tr><td>30%</td><td>risk</td><td>0.752</td><td>1.541</td><td>14</td><td>2</td><td>+0.0992</td><td>[+0.0413, +0.1653]</td></tr><tr><td>50%</td><td>random</td><td>0.785</td><td>2.236</td><td>20</td><td>4</td><td>+0.1322</td><td>[+0.0579, +0.2066]</td></tr><tr><td>50%</td><td>oracle</td><td>0.975</td><td>2.236</td><td>39</td><td>0</td><td>+0.3223</td><td>[+0.2397, +0.4050]</td></tr><tr><td>50%</td><td>risk</td><td>0.843</td><td>2.236</td><td>26</td><td>3</td><td>+0.1901</td><td>[+0.1074, +0.2727]</td></tr></table></div><div class="card">Net = (repaired − broken) / items. The oracle is an upper bound, not a policy. A score earns its place only by beating random and the best fixed action at equal cost on new items; predicting that the default will fail is not enough.</div></main></body></html>

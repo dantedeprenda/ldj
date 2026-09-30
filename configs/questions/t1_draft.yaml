@@ -1,0 +1,15 @@
+# DRAFT, for smoke-testing the pipeline only. Not the benchmark's questions: those are written
+# on the T1 train split and frozen in the T1 pre-registration before the test split is used.
+context: >
+  Below is a social-media comment. Answer questions about the comment itself.
+questions:
+  target_group: Does the comment refer to a group defined by race, ethnicity, religion, gender, sexuality, disability or national origin?
+  insult: Does the comment insult or demean someone?
+  dehumanize: Does the comment describe people as animals, objects, vermin or otherwise less than human?
+  violence: Does the comment threaten, call for or celebrate violence against people?
+  slur: Does the comment use a slur?
+  generalize: Does the comment make a negative generalization about all members of a group?
+  counter_speech: Is the comment defending a group or pushing back against hate?
+  quoting: Is the comment quoting or reporting someone else's words rather than stating its own view?
+  profanity: Does the comment use profanity?
+  sarcasm: Is the comment sarcastic or ironic?

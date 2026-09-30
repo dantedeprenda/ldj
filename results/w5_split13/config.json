@@ -1,0 +1,84 @@
+{
+ "name": "w5_split13",
+ "task": {
+  "name": "t1_fresh",
+  "split_seed": 13
+ },
+ "policy": {
+  "kind": "classify",
+  "alpha": 0.1,
+  "delta": 0.05,
+  "cut": 0.5
+ },
+ "budgets": [
+  200,
+  400,
+  800
+ ],
+ "fit_shares": [
+  0,
+  0.25,
+  0.5
+ ],
+ "reps": 100,
+ "seed": 0,
+ "min_rest": 100,
+ "max_usd": 5.0,
+ "methods": [
+  {
+   "type": "questions_judge",
+   "label": "gemma",
+   "answerer": {
+    "questions": "configs/questions/t1_v1.yaml",
+    "backend": {
+     "model": "google/gemma-4-26b-a4b-it",
+     "price_in": 0.0675,
+     "price_out": 0.225,
+     "rpm": 200,
+     "offline": true
+    }
+   },
+   "judge": {
+    "label": "gemma_judge",
+    "instruction": "Is the following social-media comment hate speech? Hate speech attacks or demeans a group, or a person because they belong to a group, defined by race, ethnicity, religion, gender, sexual orientation, gender identity, disability or national origin.\n",
+    "backend": {
+     "model": "google/gemma-4-26b-a4b-it",
+     "price_in": 0.0675,
+     "price_out": 0.225,
+     "rpm": 200,
+     "offline": true
+    }
+   }
+  },
+  {
+   "type": "judge",
+   "label": "gemma_judge",
+   "instruction": "Is the following social-media comment hate speech? Hate speech attacks or demeans a group, or a person because they belong to a group, defined by race, ethnicity, religion, gender, sexual orientation, gender identity, disability or national origin.\n",
+   "shots": [
+    0
+   ],
+   "backend": {
+    "model": "google/gemma-4-26b-a4b-it",
+    "price_in": 0.0675,
+    "price_out": 0.225,
+    "rpm": 200,
+    "offline": true
+   }
+  },
+  {
+   "type": "questions",
+   "label": "gemma",
+   "answerer": {
+    "questions": "configs/questions/t1_v1.yaml",
+    "backend": {
+     "model": "google/gemma-4-26b-a4b-it",
+     "price_in": 0.0675,
+     "price_out": 0.225,
+     "rpm": 200,
+     "offline": true
+    }
+   }
+  }
+ ],
+ "platform": "local (Darwin arm64)"
+}

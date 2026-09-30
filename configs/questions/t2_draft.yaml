@@ -1,0 +1,15 @@
+# DRAFT, for smoke-testing the pipeline only. The benchmark's questions are written on the T2
+# train reviews and frozen in the T2 pre-registration before any test review is used.
+context: >
+  Below are a systematic review's research question and eligibility criteria, followed by one
+  record (title and abstract) found by its search. Answer questions about the record, judged
+  against that review.
+questions:
+  topic: Is the record about the review's topic?
+  population: Does the record study the population or setting the criteria require?
+  intervention: Does the record study the intervention, exposure or method the criteria require?
+  design: Does the record use a study design the criteria allow?
+  outcome: Does the record report outcomes the review asks about?
+  primary: Is the record a primary study (not a review, editorial, protocol or commentary)?
+  excluded_explicitly: Does the record meet any exclusion criterion stated for the review?
+  abstract_missing: Is the abstract missing or too short to judge?

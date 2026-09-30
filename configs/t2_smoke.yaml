@@ -1,0 +1,26 @@
+# Smoke test for T2: three test reviews subsampled to <= 150 records each (all inclusions kept,
+# which raises prevalence), draft questions, a hard spend cap. Not results.
+name: t2_smoke
+task: {name: t2, reviews: [Abgaz_2023, Tumkaya_2018, Harms_2024], max_records: 150}
+max_usd: 1.0
+methods:
+  - {type: base_rate}
+  - {type: category_prior}
+  - {type: tfidf, heads: [logreg]}
+  - type: questions
+    label: gemma
+    answerer:
+      questions: configs/questions/t2_draft.yaml
+      backend: {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225, rpm: 60}
+  - type: judge
+    label: gemma_judge
+    instruction: >
+      You screen records for a systematic review. Given the review's research question and
+      eligibility criteria, should this record go on to full-text review?
+    shots: [0]
+    backend: {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225, rpm: 60}
+ks: [10, 50]
+seeds: [0]
+draw: {min_each: 1, min_each_below: 25}
+prices:
+  - {c_fp: 1.83, c_fn: 20.0, volume: 10000}

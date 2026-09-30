@@ -1,0 +1,14 @@
+# Reproduce the routing paper's LLMRouterBench test results through this harness (offline).
+# Must match results/llmrouterbench_test/metrics.json of jev-routing-paper exactly before any
+# new task is run. Embeddings are read from the paper's cache (same texts -> same file).
+name: t0_reproduce
+task: {name: t0, benchmark: llmrouterbench}
+methods:
+  - {type: questions, label: jev, answerer: {precomputed: jev}}
+  - {type: tfidf}
+  - {type: embedding, label: bge, model: BAAI/bge-base-en-v1.5,
+     cache_dir: ../routing-success-prediction/.cache/embeddings}
+  - {type: embedding, label: bgeL, model: BAAI/bge-large-en-v1.5, tune: true,
+     cache_dir: ../routing-success-prediction/.cache/embeddings}
+ks: [25, 50, 100, 200, all]
+seeds: [42, 999, 2024, 2025, 3407]

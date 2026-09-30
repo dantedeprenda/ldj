@@ -1,0 +1,21 @@
+# T2 question set v1. Written 2026-09-28 after reading records from SYNERGY+ *training* reviews
+# only (official split); frozen by preregistration/T2.md before any test review was scored.
+# The questions are generic: each item arrives with its own review's research question and
+# eligibility criteria, and the questions are judged against them.
+context: >
+  Below are a systematic review's research question and eligibility criteria, followed by one
+  record (title and abstract) found by the review's search. Judge the record against that
+  review. If the abstract is missing, judge from the title.
+questions:
+  topic: Is the record about the review's topic?
+  population: Does the record study the population, species, setting or data the criteria require?
+  intervention: Does the record study the intervention, exposure, method or technology the criteria require?
+  comparator: Does the record include the comparison or control condition the criteria require (answer yes if the criteria require none)?
+  outcome: Does the record measure or report outcomes the review asks about?
+  design: Does the record use a study design the criteria allow?
+  primary_study: Is the record a primary study rather than a review, editorial, letter, protocol or commentary?
+  wrong_population: Does the record clearly study a population, species or setting the criteria exclude?
+  exclusion_criterion: Does the record meet any exclusion criterion stated for the review?
+  specific_match: Does the record match a specific inclusion criterion by name (for example a named drug, method, disease or measure)?
+  tangential: Does the record only mention the review's topic in passing while being about something else?
+  enough_information: Does the title and abstract give enough information to decide?

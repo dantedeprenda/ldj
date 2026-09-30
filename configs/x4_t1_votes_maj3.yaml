@@ -1,0 +1,36 @@
+# W4 / E2 (exploratory): one label per item vs three labels on a third of the items, at
+# equal annotation actions. Train-pool labels (fitting and certification) come from individual MHS
+# annotators' calls (src/ldj/labels.py; call = rating 2): majority of 3 annotators drawn at random without replacement per item. Test labels stay the consensus, so
+# certificates are judged against it. Actions: one_vote B labels = B actions; majority3 B labels =
+# 3B actions. Paired budgets: one_vote {200, 400, 800} vs majority3 {67, 134, 267}
+# (~200/400/800 actions). Rows do not pair draw-for-draw across different B; compare summaries.
+# Policy, shares, reps and seed as configs/x4_t1.yaml. Offline: cached answers only.
+name: x4_t1_votes_maj3
+task: {name: t1, n_train: 3000, n_test: 2000, min_annotations: 3, seed: 0}
+train_labels: majority3
+label_seed: 0
+policy: {kind: classify, alpha: 0.10, delta: 0.05, cut: 0.5}
+budgets: [67, 134, 267]
+fit_shares: [0, 0.10, 0.25, 0.50, 0.75]
+reps: 500
+seed: 0
+min_rest: 100
+methods:
+  - type: questions_judge
+    label: gemma
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: &gemma {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225,
+                       offline: true}
+    judge: &judge
+      label: gemma_judge
+      instruction: &instr >
+        Is the following social-media comment hate speech? Hate speech attacks or demeans a group,
+        or a person because they belong to a group, defined by race, ethnicity, religion, gender,
+        sexual orientation, gender identity, disability or national origin.
+      backend: *gemma
+  - type: judge
+    label: gemma_judge
+    instruction: *instr
+    shots: [0]
+    backend: *gemma

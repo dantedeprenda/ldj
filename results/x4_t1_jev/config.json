@@ -1,0 +1,88 @@
+{
+ "name": "x4_t1_jev",
+ "task": {
+  "name": "t1",
+  "n_train": 3000,
+  "n_test": 2000,
+  "min_annotations": 3,
+  "seed": 0
+ },
+ "policy": {
+  "kind": "classify",
+  "alpha": 0.1,
+  "delta": 0.05,
+  "cut": 0.5
+ },
+ "budgets": [
+  25,
+  50,
+  100,
+  200,
+  400,
+  800
+ ],
+ "fit_shares": [
+  0,
+  0.1,
+  0.25,
+  0.5,
+  0.75
+ ],
+ "reps": 500,
+ "seed": 0,
+ "min_rest": 100,
+ "max_usd": 10.0,
+ "methods": [
+  {
+   "type": "judge",
+   "label": "jev_direct",
+   "instruction": "Is the following social-media comment hate speech? Hate speech attacks or demeans a group, or a person because they belong to a group, defined by race, ethnicity, religion, gender, sexual orientation, gender identity, disability or national origin.\n",
+   "shots": [
+    0
+   ],
+   "backend": {
+    "kind": "typesafe",
+    "model": "jev-1.13.0",
+    "rpm": 300,
+    "offline": true
+   }
+  },
+  {
+   "type": "questions",
+   "label": "jev",
+   "answerer": {
+    "questions": "configs/questions/t1_v1.yaml",
+    "backend": {
+     "kind": "typesafe",
+     "model": "jev-1.13.0",
+     "rpm": 300,
+     "offline": true
+    }
+   }
+  },
+  {
+   "type": "questions_judge",
+   "label": "jev",
+   "answerer": {
+    "questions": "configs/questions/t1_v1.yaml",
+    "backend": {
+     "kind": "typesafe",
+     "model": "jev-1.13.0",
+     "rpm": 300,
+     "offline": true
+    }
+   },
+   "judge": {
+    "label": "jev_direct",
+    "instruction": "Is the following social-media comment hate speech? Hate speech attacks or demeans a group, or a person because they belong to a group, defined by race, ethnicity, religion, gender, sexual orientation, gender identity, disability or national origin.\n",
+    "backend": {
+     "kind": "typesafe",
+     "model": "jev-1.13.0",
+     "rpm": 300,
+     "offline": true
+    }
+   }
+  }
+ ],
+ "platform": "local (Darwin arm64)"
+}

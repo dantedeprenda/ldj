@@ -1,0 +1,29 @@
+{
+ "n_items": 200,
+ "repeats": 3,
+ "workers": 8,
+ "spend_usd": 0.02452136399999997,
+ "models": [
+  "jev-1.13.0"
+ ],
+ "latency_s": {
+  "p50": 0.29712810448836535,
+  "p95": 0.40706315897987216
+ },
+ "direct": {
+  "mean_abs_diff": 0.0119,
+  "max_abs_diff": 0.12,
+  "share_decision_flips": 0.025,
+  "identical_share": 0.255,
+  "latency_p50": 0.29549347900319844,
+  "latency_p95": 0.4044134503637905
+ },
+ "questions": {
+  "mean_abs_diff": 0.010815384615384616,
+  "max_abs_diff": 0.15999999999999998,
+  "share_decision_flips": 0.019230769230769232,
+  "identical_share": 0.31076923076923074,
+  "latency_p50": 0.2982594374916516,
+  "latency_p95": 0.40921981426363346
+ }
+}

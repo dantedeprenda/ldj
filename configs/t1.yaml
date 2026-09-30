@@ -1,0 +1,46 @@
+# T1 (content moderation, Measuring Hate Speech). Pre-registered: preregistration/T1.md.
+name: t1
+task: {name: t1, n_train: 3000, n_test: 2000, min_annotations: 3, seed: 0}
+max_usd: 25.0
+methods:
+  # LLM methods first so API time overlaps the local methods
+  - type: questions
+    label: gemma
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: &gemma {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225, rpm: 200}
+  - type: judge
+    label: gemma_judge
+    instruction: &t1_instruction >
+      Is the following social-media comment hate speech? Hate speech attacks or demeans a group,
+      or a person because they belong to a group, defined by race, ethnicity, religion, gender,
+      sexual orientation, gender identity, disability or national origin.
+    shots: [0]
+    backend: *gemma
+  - type: judge
+    label: gemma_judge
+    instruction: *t1_instruction
+    shots: [25]          # up to 25 of the k labels shown as examples
+    ks: [5, 25]          # compute: 2,000 long prompts per run
+    backend: *gemma
+  - {type: base_rate}
+  - {type: category_prior}
+  - {type: tfidf}
+  - {type: embedding, label: bge, model: BAAI/bge-base-en-v1.5, device: mps}
+  - {type: embedding, label: bgeL, model: BAAI/bge-large-en-v1.5, tune: true, device: mps}
+  - {type: setfit, label: setfit, policies: false}   # compute: no cross-fitted cost policies
+ks: [5, 10, 25, 50, 100, all]
+seeds: [42, 999, 2024, 2025, 3407]
+draw: {min_each: 1, min_each_below: 25}
+prices:
+  - {c_fp: 1.0, c_fn: 1.0, volume: 10000}   # primary
+  - {c_fp: 1.0, c_fn: 5.0, volume: 10000}   # missed hate is costly
+  - {c_fp: 5.0, c_fn: 1.0, volume: 10000}   # wrongful removal is costly
+threshold_rules: [empirical, ucb]
+analysis:
+  primary: gemma_features
+  baselines: [tfidf_logreg, tfidf_knn10, bge_logreg, bge_knn, bgeL_logreg, bgeL_knn, setfit]
+  others: [gemma_judge_0shot, gemma_judge_25shot, category_prior]
+  rule_k: 25
+  cost: {c_fp: 1.0, c_fn: 1.0, rule: ucb}
+  B: 2000

@@ -1,0 +1,92 @@
+{
+ "name": "x4_t1_llama",
+ "task": {
+  "name": "t1",
+  "n_train": 3000,
+  "n_test": 2000,
+  "min_annotations": 3,
+  "seed": 0
+ },
+ "policy": {
+  "kind": "classify",
+  "alpha": 0.1,
+  "delta": 0.05,
+  "cut": 0.5
+ },
+ "budgets": [
+  25,
+  50,
+  100,
+  200,
+  400,
+  800
+ ],
+ "fit_shares": [
+  0,
+  0.1,
+  0.25,
+  0.5,
+  0.75
+ ],
+ "reps": 500,
+ "seed": 0,
+ "min_rest": 100,
+ "max_usd": 3.0,
+ "methods": [
+  {
+   "type": "questions_judge",
+   "label": "llama",
+   "answerer": {
+    "questions": "configs/questions/t1_v1.yaml",
+    "backend": {
+     "model": "meta-llama/llama-3.3-70b-instruct",
+     "price_in": 0.1,
+     "price_out": 0.32,
+     "rpm": 200,
+     "offline": true
+    }
+   },
+   "judge": {
+    "label": "llama_judge",
+    "instruction": "Is the following social-media comment hate speech? Hate speech attacks or demeans a group, or a person because they belong to a group, defined by race, ethnicity, religion, gender, sexual orientation, gender identity, disability or national origin.\n",
+    "backend": {
+     "model": "meta-llama/llama-3.3-70b-instruct",
+     "price_in": 0.1,
+     "price_out": 0.32,
+     "rpm": 200,
+     "offline": true
+    }
+   }
+  },
+  {
+   "type": "judge",
+   "label": "llama_judge",
+   "instruction": "Is the following social-media comment hate speech? Hate speech attacks or demeans a group, or a person because they belong to a group, defined by race, ethnicity, religion, gender, sexual orientation, gender identity, disability or national origin.\n",
+   "shots": [
+    0
+   ],
+   "backend": {
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "price_in": 0.1,
+    "price_out": 0.32,
+    "rpm": 200,
+    "offline": true
+   }
+  },
+  {
+   "type": "questions",
+   "label": "llama",
+   "answerer": {
+    "questions": "configs/questions/t1_v1.yaml",
+    "backend": {
+     "model": "meta-llama/llama-3.3-70b-instruct",
+     "price_in": 0.1,
+     "price_out": 0.32,
+     "rpm": 200,
+     "offline": true
+    }
+   }
+  }
+ ],
+ "platform": "local (Darwin arm64)"
+}

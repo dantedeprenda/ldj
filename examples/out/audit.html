@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Audit report</title><style>
+:root { --bg:#ffffff; --fg:#1d1d1f; --muted:#5f6368; --line:#d9dce1; --card:#f6f7f9;
+  --ok:#0b6b3a; --ok-bg:#e3f4ea; --no:#8a4b00; --no-bg:#fdf0dc; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#16181c; --fg:#e8eaed; --muted:#a3a8b0; --line:#34383f; --card:#1f2228;
+    --ok:#7fd8a4; --ok-bg:#16301f; --no:#f3c07a; --no-bg:#3a2a12; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg);
+  font:15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width:860px; margin:0 auto; padding:24px 16px 48px; }
+h1 { font-size:22px; margin:0 0 4px; } h2 { font-size:17px; margin:28px 0 8px; }
+.sub { color:var(--muted); margin:0 0 20px; }
+.verdict { border-radius:10px; padding:16px 18px; margin:16px 0; font-size:18px; font-weight:600; }
+.verdict.ok { background:var(--ok-bg); color:var(--ok); }
+.verdict.no { background:var(--no-bg); color:var(--no); }
+.verdict small { display:block; font-size:14px; font-weight:400; margin-top:6px; color:var(--fg); }
+table { border-collapse:collapse; width:100%; margin:8px 0; font-variant-numeric:tabular-nums; }
+th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:500; font-size:13px; }
+.wrap { overflow-x:auto; }
+.card { background:var(--card); border-radius:10px; padding:12px 16px; margin:8px 0; }
+ul { padding-left:20px; } li { margin:4px 0; }
+.note { color:var(--muted); font-size:13px; }
+</style></head><body><main><h1>Audit report</h1><p class="sub">error rate among automated items ≤ 0.1, with probability ≥ 0.95</p><div class="verdict no">Insufficient evidence<small>Certifying risk &lt;= 0.1 needs at least 29 audit items in the automated region with no errors (more if any are wrong); the first threshold tested holds 53 audit items.</small></div><div class="wrap"><table><tr><th>Target</th><td>error rate among automated items ≤ 0.1</td></tr><tr><th>Confidence</th><td>0.95 over repeated audit samples</td></tr><tr><th>Policy</th><td>accept</td></tr><tr><th>Audit sample (labeled)</th><td>121</td></tr><tr><th>Deploy items (unlabeled)</th><td>1036</td></tr><tr><th>Threshold</th><td>–</td></tr><tr><th>Share of deploy items automated</th><td>0.0%</td></tr><tr><th>Certified bound</th><td>–</td></tr><tr><th>Audit items in the automated region</th><td>0</td></tr><tr><th>Errors among them</th><td>0</td></tr></table></div><h2>What the guarantee means</h2><div class="card">Over many independent random audit samples, the chance that this procedure issues an unsafe certificate (one whose true error misses the target) is at most 5%. Audits that issue nothing count as safe, so this is not a promise about the share of issued certificates: when certificates are rare, a larger share of the issued ones can be unsafe. It says nothing about any single automated item, and it stops applying when the data source changes.</div><h2>Assumptions this tool cannot check</h2><ul><li>The audit rows are a random sample of the items the policy will face.</li><li>The decision system (model, prompt, head) was frozen before the audit rows were labeled, and not changed after seeing them.</li><li>Deploy items come from the same distribution as audited items; a changed source needs a new audit.</li><li>Audit labels are the reference the target is stated against (e.g. one reviewer vs a consensus changes what is certified).</li></ul></main></body></html>

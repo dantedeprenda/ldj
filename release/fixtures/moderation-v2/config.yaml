@@ -1,0 +1,42 @@
+# X1 (exploratory): calibrated judge baselines on T1.
+# Same task, splits, label draws, seeds and prices as the pre-registered T1 run (configs/t1.yaml).
+# Offline: every LLM answer must already be cached; prompts are frozen from configs/t1.yaml.
+name: x1_t1
+task: {name: t1, n_train: 3000, n_test: 2000, min_annotations: 3, seed: 0}
+max_usd: 0.0
+methods:
+  - type: questions
+    label: gemma
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: &gemma {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225, offline: true}
+  - type: judge
+    label: gemma_judge
+    instruction: &t1_instruction >
+      Is the following social-media comment hate speech? Hate speech attacks or demeans a group,
+      or a person because they belong to a group, defined by race, ethnicity, religion, gender,
+      sexual orientation, gender identity, disability or national origin.
+    shots: [0]
+    backend: *gemma
+  - type: judge_platt                      # arm (a)
+    judge: &judge {label: gemma_judge, instruction: *t1_instruction, backend: *gemma}
+  - type: questions_judge                  # arm (b)
+    label: gemma
+    answerer: {questions: configs/questions/t1_v1.yaml, backend: *gemma}
+    judge: *judge
+  - {type: embedding, label: bgeL, model: BAAI/bge-large-en-v1.5, tune: true, heads: [logreg], device: mps}
+ks: [5, 10, 25, 50, 100, all]
+seeds: [42, 999, 2024, 2025, 3407]
+draw: {min_each: 1, min_each_below: 25}
+prices:
+  - {c_fp: 1.0, c_fn: 1.0, volume: 10000}
+  - {c_fp: 1.0, c_fn: 5.0, volume: 10000}
+  - {c_fp: 5.0, c_fn: 1.0, volume: 10000}
+threshold_rules: [empirical, ucb]
+analysis:
+  primary: gemma_features_judge
+  baselines: [gemma_features, bgeL_logreg]
+  others: [gemma_judge_0shot, gemma_judge_0shot_platt]
+  rule_k: 25
+  cost: {c_fp: 1.0, c_fn: 1.0, rule: ucb}
+  B: 2000

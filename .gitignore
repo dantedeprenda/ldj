@@ -1,0 +1,19 @@
+# Local secrets. Never commit.
+.env
+data/
+.cache/
+# Evidence tables (Markdown, CSV, JSON) are tracked; bulky per-draw outputs are not.
+results/**/*.parquet
+results/**/*.npz
+results/**/records.json
+results/*smoke*/
+results/reproduce/
+results/figures/
+.DS_Store
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+synergy_cache.sqlite
+checkpoints/
+logs/

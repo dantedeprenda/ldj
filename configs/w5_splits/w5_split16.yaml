@@ -1,0 +1,36 @@
+# W5 (pre-registered: preregistration/W5.md). The frozen default rule on 5,000 untouched
+# Measuring Hate Speech comments, with the direct judge and a fixed split on the same draws.
+# Answers are fetched once with scripts/answer.py (online, capped); this run is offline.
+name: w5_split16
+task: {name: t1_fresh, split_seed: 16}
+policy: {kind: classify, alpha: 0.10, delta: 0.05, cut: 0.5}
+budgets: [200, 400, 800]
+fit_shares: [0, 0.25, 0.50]
+reps: 100
+seed: 0
+min_rest: 100
+max_usd: 5.0
+methods:
+  - type: questions_judge          # the rule
+    label: gemma
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: &gemma {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225,
+                       rpm: 200, offline: true}
+    judge: &judge
+      label: gemma_judge
+      instruction: &t1_instruction >
+        Is the following social-media comment hate speech? Hate speech attacks or demeans a group,
+        or a person because they belong to a group, defined by race, ethnicity, religion, gender,
+        sexual orientation, gender identity, disability or national origin.
+      backend: *gemma
+  - type: judge                    # C1, direct judge (f = 0)
+    label: gemma_judge
+    instruction: *t1_instruction
+    shots: [0]
+    backend: *gemma
+  - type: questions                # C2, fixed split (f = 0.50)
+    label: gemma
+    answerer:
+      questions: configs/questions/t1_v1.yaml
+      backend: *gemma

@@ -1,0 +1,40 @@
+# T2 (systematic-review screening, SYNERGY+ v3.0). Pre-registered: preregistration/T2.md.
+# Every method is fit separately inside each review (its own k labels, its own thresholds).
+name: t2
+task: {name: t2, split: test, min_positives: 20, cap_records: 2000, test_frac: 0.5, seed: 0}
+per_category: true
+wss: true
+max_usd: 25.0
+methods:
+  - {type: base_rate}
+  - {type: tfidf}
+  - {type: embedding, label: bge, model: BAAI/bge-base-en-v1.5, device: mps}
+  - {type: embedding, label: bgeL, model: BAAI/bge-large-en-v1.5, tune: true, device: mps}
+  - type: questions
+    label: gemma
+    answerer:
+      questions: configs/questions/t2_v1.yaml
+      max_chars: 3000
+      backend: &gemma {model: google/gemma-4-26b-a4b-it, price_in: 0.0675, price_out: 0.225, rpm: 200}
+  - type: judge
+    label: gemma_judge
+    instruction: >
+      You screen records for a systematic review. Given the review's research question and
+      eligibility criteria, should this record go on to full-text review?
+    shots: [0]
+    max_chars: 3000
+    backend: *gemma
+ks: [5, 10, 25, 50, 100, all]
+seeds: [42, 999, 2024, 2025, 3407]
+draw: {min_each: 1, min_each_below: 1000000}   # every labeled set holds >= 1 included record
+prices:
+  - {c_fp: 1.83, c_fn: 20.0, volume: 2000}
+  - {c_fp: 1.83, c_fn: 100.0, volume: 2000}
+threshold_rules: [empirical, ucb]
+recall_targets: [0.95]
+analysis:
+  primary: gemma_features
+  baselines: [tfidf_logreg, tfidf_knn10, bge_logreg, bge_knn, bgeL_logreg, bgeL_knn]
+  others: [gemma_judge_0shot]
+  rule_k: 25
+  B: 2000
