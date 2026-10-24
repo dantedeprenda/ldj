@@ -12,5 +12,6 @@ authors:
     family-names: de Prenda
 license: Apache-2.0
 repository-code: "https://github.com/dantedeprenda/ldj"
+doi: 10.5281/zenodo.23615859
 version: 0.1.0
 date-released: 2026-10-24

@@ -8,6 +8,7 @@
 ![python](https://img.shields.io/badge/python-3.11%2B-3776ab)
 ![license](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![offline replay](https://img.shields.io/badge/replay-offline%2C%20no%20keys-2ea44f)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23615859.svg)](https://doi.org/10.5281/zenodo.23615859)
 
 [**Quick start**](#quick-start) · [**The tool**](#the-tool) · [**Findings**](#what-we-found) · [**Technical report**](docs/report.md) · [**Methods & limits**](docs/methods.md)
 
