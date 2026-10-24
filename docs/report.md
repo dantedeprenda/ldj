@@ -1,7 +1,7 @@
 # Low-Data Judgment: how much can you safely automate with a few hundred human labels?
 
-*Technical report, draft of 2026-09-30. Every number below is traceable to a file in this repository;
-paths are given in brackets. Results marked **exploratory** use data that had already been seen;
+*Technical report, preview draft (ldj v0.1.0); results as of 2026-09-30. Every number below is
+traceable to a file in this repository; paths are given in brackets. Results marked **exploratory** use data that had already been seen;
 results marked **pre-registered** were fixed in a committed document before the data were scored.*
 
 ## 1. Summary

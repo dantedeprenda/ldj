@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: >-
-  Preliminary release (2026-09-30). If you use this software, please cite it as below.
+  Preview release (v0.1.0). If you use this software, please cite it as below.
 title: "Low-Data Judgment (ldj)"
 abstract: >-
   Tools to audit an AI decision system from a small random sample of human checks: certify how
@@ -13,3 +13,4 @@ authors:
 license: Apache-2.0
 repository-code: "https://github.com/dantedeprenda/ldj"
 version: 0.1.0
+date-released: 2026-10-24

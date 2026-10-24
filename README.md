@@ -181,11 +181,14 @@ tests/            unit and end-to-end tests (no data, keys or network needed)
 
 ## Data, models and terms
 
+Licences and terms re-checked on 2026-10-24.
+
 | Resource | License / terms | In this repository |
 |---|---|---|
 | [Measuring Hate Speech](https://huggingface.co/datasets/ucberkeley-dlab/measuring-hate-speech) (Kennedy et al., 2020) | CC-BY-4.0 | downloaded by the loader; fixtures hold labels and derived predictions only |
 | [SYNERGY](https://github.com/asreview/synergy-dataset) | labels CC0; abstracts from OpenAlex and publishers | ids and derived results only; abstracts are not redistributed |
-| [LLMRouterBench](https://huggingface.co/datasets/NPULH/LLMRouterBench) | MIT | derived results only |
+| [LLMRouterBench](https://huggingface.co/datasets/NPULH/LLMRouterBench) | MIT (stated in its [README](https://github.com/ynulihao/LLMRouterBench); the repository has no LICENSE file) | derived results only |
+| [TwinRouterBench](https://huggingface.co/datasets/Amorph/TwinRouterBench) | Apache-2.0 | derived results only |
 | TypeSafe Jev (`jev-1.13.0`) | [Master Customer Agreement](https://typesafe.ai/legal/mca) | derived results only; raw answers are not redistributed |
 | Gemma 4, Llama 3.3 (via OpenRouter) | model terms | derived results only |
 
